@@ -1,16 +1,13 @@
 const express = require('express');
 const session = require('express-session');
 const loki = require('lokijs');
-const path = require('path');
 const app = express();
 const db = new loki('esports.db', { autoload: true, autoloadCallback: databaseInitialize, autosave: true, autosaveInterval: 4000 });
 
 function databaseInitialize() {
-    let content = db.getCollection('content') || db.addCollection('content');
-    if (content.count() === 0) {
-        content.insert({ type: 'music', url: '' });
-        content.insert({ type: 'roster', list: [] });
-        content.insert({ type: 'gallery', wins: [], losses: [] });
+    let stats = db.getCollection('stats') || db.addCollection('stats');
+    if (stats.count() === 0) {
+        stats.insert({ wins: 0, losses: 0, instagram: 'https://instagram.com', type: 'global' });
     }
 }
 
@@ -25,12 +22,8 @@ const isAdmin = (req, res, next) => {
 };
 
 app.get('/', (req, res) => {
-    const content = db.getCollection('content');
-    res.render('index', { 
-        music: content.findOne({ type: 'music' }),
-        roster: content.findOne({ type: 'roster' }),
-        gallery: content.findOne({ type: 'gallery' })
-    });
+    const stats = db.getCollection('stats').findOne({ type: 'global' });
+    res.render('index', { stats });
 });
 
 app.get('/login', (req, res) => res.render('login'));
@@ -43,19 +36,17 @@ app.post('/login', (req, res) => {
 });
 
 app.get('/admin', isAdmin, (req, res) => {
-    const content = db.getCollection('content');
-    res.render('admin', { 
-        music: content.findOne({ type: 'music' }),
-        roster: content.findOne({ type: 'roster' }),
-        gallery: content.findOne({ type: 'gallery' })
-    });
+    const stats = db.getCollection('stats').findOne({ type: 'global' });
+    res.render('admin', { stats });
 });
 
 app.post('/admin/update', isAdmin, (req, res) => {
-    const content = db.getCollection('content');
-    const item = content.findOne({ type: req.body.type });
-    if (req.body.type === 'music') item.url = req.body.url;
-    content.update(item);
+    const statsColl = db.getCollection('stats');
+    const stats = statsColl.findOne({ type: 'global' });
+    stats.wins = req.body.wins;
+    stats.losses = req.body.losses;
+    stats.instagram = req.body.instagram;
+    statsColl.update(stats);
     res.redirect('/admin');
 });
 

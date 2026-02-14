@@ -1,25 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>LKA Admin Panel</title>
+    <title>LKA Yönetim</title>
     <link rel="stylesheet" href="/style.css">
     <style>
-        .admin-form { background: #1a1a1a; padding: 20px; border-radius: 15px; max-width: 500px; margin: 20px auto; border: 1px solid #ff4b2b; }
-        input { width: 90%; padding: 10px; margin: 10px 0; background: #333; border: 1px solid #444; color: white; border-radius: 5px; }
+        .admin-form { background: #1a1a1a; padding: 25px; border-radius: 15px; max-width: 450px; margin: 50px auto; border: 1px solid #ff4b2b; }
+        input { width: 90%; padding: 12px; margin: 10px 0; background: #222; border: 1px solid #444; color: white; border-radius: 8px; font-size: 1rem; }
+        .label { color: #ff4b2b; font-weight: bold; display: block; text-align: left; margin-left: 5%; }
     </style>
 </head>
 <body>
-    <h1>LKA Yönetim Paneli</h1>
+    <h1>LKA YÖNETİM PANELİ</h1>
     <div class="admin-form">
-        <h3>Win / Lose Güncelle</h3>
-        <input type="number" placeholder="Galibiyet (Win)">
-        <input type="number" placeholder="Mağlubiyet (Lose)">
-        
-        <h3>Instagram Linki</h3>
-        <input type="text" placeholder="Instagram URL (https://...)">
-        
-        <button class="btn" onclick="alert('Aga şimdilik veritabanı bağlamadık, yakında veriler kaydolacak!')">Güncelle</button>
+        <form action="/admin/update" method="POST">
+            <span class="label">Galibiyet (WIN)</span>
+            <input type="number" name="wins" value="<%= stats.wins %>">
+            
+            <span class="label">Mağlubiyet (LOSE)</span>
+            <input type="number" name="losses" value="<%= stats.losses %>">
+            
+            <span class="label">Instagram URL</span>
+            <input type="text" name="instagram" value="<%= stats.instagram %>">
+            
+            <button type="submit" class="btn" style="width: 100%; cursor: pointer;">VERİLERİ KAYDET</button>
+        </form>
     </div>
-    <a href="/" style="color: #666;">Siteye Dön</a>
+    <a href="/" style="color: #666; text-decoration: none;">← Siteye Dön</a>
 </body>
 </html>
