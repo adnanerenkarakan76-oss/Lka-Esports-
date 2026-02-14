@@ -26,3 +26,51 @@ p {
     margin-top: 20px;
     font-weight: bold;
 }
+
+/* Oyuncu Kartları Alanı */
+.roster-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 50px;
+}
+
+.player-card {
+    background: #1a1a1a;
+    border: 2px solid #ff4b2b;
+    border-radius: 15px;
+    padding: 20px;
+    width: 200px;
+    transition: 0.3s;
+    box-shadow: 0 0 15px rgba(255, 75, 43, 0.2);
+}
+
+.player-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 25px rgba(255, 75, 43, 0.6);
+}
+
+.player-card img {
+    width: 100%;
+    border-radius: 10px;
+    filter: grayscale(100%);
+    transition: 0.3s;
+}
+
+.player-card:hover img {
+    filter: grayscale(0%);
+}
+
+.player-name {
+    font-weight: bold;
+    font-size: 1.4rem;
+    margin-top: 15px;
+    color: #ff4b2b;
+}
+
+.player-role {
+    font-size: 0.9rem;
+    color: #888;
+    text-transform: uppercase;
+}
