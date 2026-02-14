@@ -1,10 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Admin Paneli</title>
+    <title>LKA Admin Panel</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        .admin-form { background: #1a1a1a; padding: 20px; border-radius: 15px; max-width: 500px; margin: 20px auto; border: 1px solid #ff4b2b; }
+        input { width: 90%; padding: 10px; margin: 10px 0; background: #333; border: 1px solid #444; color: white; border-radius: 5px; }
+    </style>
 </head>
 <body>
-    <h1>Hoş geldin Aga!</h1>
-    <p>Buradan siteyi yönetebilirsin.</p>
+    <h1>LKA Yönetim Paneli</h1>
+    <div class="admin-form">
+        <h3>Win / Lose Güncelle</h3>
+        <input type="number" placeholder="Galibiyet (Win)">
+        <input type="number" placeholder="Mağlubiyet (Lose)">
+        
+        <h3>Instagram Linki</h3>
+        <input type="text" placeholder="Instagram URL (https://...)">
+        
+        <button class="btn" onclick="alert('Aga şimdilik veritabanı bağlamadık, yakında veriler kaydolacak!')">Güncelle</button>
+    </div>
+    <a href="/" style="color: #666;">Siteye Dön</a>
 </body>
 </html>
