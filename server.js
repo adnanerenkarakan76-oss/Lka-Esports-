@@ -2,11 +2,35 @@ const express = require('express');
 const session = require('express-session');
 const loki = require('lokijs');
 const app = express();
-const db = new loki('esports.db', { autoload: true, autoloadCallback: databaseInitialize, autosave: true, autosaveInterval: 4000 });
+const db = new loki('esports.db', { 
+    autoload: true, 
+    autoloadCallback: databaseInitialize, 
+    autosave: true, 
+    autosaveInterval: 4000 
+});
 
 function databaseInitialize() {
-    if (!db.getCollection('stats')) db.addCollection('stats').insert({ wins: 0, losses: 0, instagram: '', banner: '', nextMatch: 'Yakında!', matchTime: '', type: 'global' });
-    if (!db.getCollection('players')) db.addCollection('players');
+    let stats = db.getCollection('stats');
+    if (!stats) {
+        stats = db.addCollection('stats');
+        stats.insert({ wins: 142, losses: 24, instagram: '', banner: '', nextMatch: 'Yakında!', matchTime: '', type: 'global' });
+    }
+
+    let players = db.getCollection('players');
+    if (!players) {
+        players = db.addCollection('players');
+    }
+
+    // EĞER OYUNCU LİSTESİ BOŞSA, SENİN KADROYU OTOMATİK EKLE
+    if (players.count() === 0) {
+        players.insert([
+            { nick: 'DA | Florynt', kupa: '84K+', ozellik: '10K+ 3v3 Zafer | Ultra Refleks' },
+            { nick: 'Zypher', kupa: '65K+', ozellik: '70 Maçlık Seri | Master Lig' },
+            { nick: 'KJX | Lodzz', kupa: '54K+', ozellik: 'Malatya E-Sport Üyesi' },
+            { nick: 'Pósie691', kupa: '50K+', ozellik: '7.8K 3v3 Zafer | Strateji Uzmanı' },
+            { nick: 'Worzi', kupa: '40K+', ozellik: '8.6K 3v3 Zafer | House of Speed' }
+        ]);
+    }
 }
 
 app.set('view engine', 'ejs');
