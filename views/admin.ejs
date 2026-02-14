@@ -1,30 +1,47 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>LKA Yönetim</title>
+    <title>LKA Admin</title>
     <link rel="stylesheet" href="/style.css">
     <style>
-        .admin-form { background: #1a1a1a; padding: 25px; border-radius: 15px; max-width: 450px; margin: 50px auto; border: 1px solid #ff4b2b; }
-        input { width: 90%; padding: 12px; margin: 10px 0; background: #222; border: 1px solid #444; color: white; border-radius: 8px; font-size: 1rem; }
-        .label { color: #ff4b2b; font-weight: bold; display: block; text-align: left; margin-left: 5%; }
+        .section { background: #1a1a1a; padding: 20px; border: 1px solid #ff4b2b; border-radius: 15px; margin: 20px auto; max-width: 600px; }
+        input { width: 90%; padding: 10px; margin: 5px 0; background: #222; border: 1px solid #444; color: white; border-radius: 5px; }
+        .player-list-item { display: flex; justify-content: space-between; padding: 10px; border-bottom: 1px solid #333; }
     </style>
 </head>
 <body>
-    <h1>LKA YÖNETİM PANELİ</h1>
-    <div class="admin-form">
-        <form action="/admin/update" method="POST">
-            <span class="label">Galibiyet (WIN)</span>
-            <input type="number" name="wins" value="<%= stats.wins %>">
-            
-            <span class="label">Mağlubiyet (LOSE)</span>
-            <input type="number" name="losses" value="<%= stats.losses %>">
-            
-            <span class="label">Instagram URL</span>
-            <input type="text" name="instagram" value="<%= stats.instagram %>">
-            
-            <button type="submit" class="btn" style="width: 100%; cursor: pointer;">VERİLERİ KAYDET</button>
+    <h1>LKA YÖNETİM MERKEZİ</h1>
+
+    <div class="section">
+        <h3>Genel Ayarlar & Görsel</h3>
+        <form action="/admin/update-stats" method="POST">
+            <input type="text" name="banner" placeholder="Banner Resim URL (Hızlı Resim vb.)" value="<%= stats.banner %>">
+            <input type="number" name="wins" placeholder="Wins" value="<%= stats.wins %>">
+            <input type="number" name="losses" placeholder="Losses" value="<%= stats.losses %>">
+            <input type="text" name="instagram" placeholder="Instagram URL" value="<%= stats.instagram %>">
+            <button class="btn" type="submit">Ayarları Kaydet</button>
         </form>
     </div>
-    <a href="/" style="color: #666; text-decoration: none;">← Siteye Dön</a>
+
+    <div class="section">
+        <h3>Yeni Oyuncu Ekle</h3>
+        <form action="/admin/add-player" method="POST">
+            <input type="text" name="nick" placeholder="Oyuncu Nick" required>
+            <input type="text" name="kupa" placeholder="Kupa (Örn: 85K)" required>
+            <input type="text" name="ozellik" placeholder="Öne Çıkan Özellik" required>
+            <button class="btn" type="submit">Oyuncuyu Kat</button>
+        </form>
+    </div>
+
+    <div class="section">
+        <h3>Mevcut Kadro</h3>
+        <% players.forEach(function(p) { %>
+            <div class="player-list-item">
+                <span><b><%= p.nick %></b> (<%= p.kupa %>)</span>
+                <a href="/admin/delete-player/<%= p.$loki %>" style="color: red;">SİL</a>
+            </div>
+        <% }); %>
+    </div>
+    <a href="/">← Siteye Dön</a>
 </body>
 </html>
