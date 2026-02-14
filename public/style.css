@@ -1,76 +1,89 @@
 body {
-    background-color: #0f0f0f;
+    background-color: #050505;
     color: #ffffff;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', sans-serif;
     text-align: center;
     margin: 0;
-    padding: 50px;
-}
-h1 {
-    color: #ff4b2b;
-    font-size: 3rem;
-    text-transform: uppercase;
-    letter-spacing: 5px;
-}
-p {
-    font-size: 1.2rem;
-    color: #ccc;
-}
-.btn {
-    display: inline-block;
-    padding: 15px 30px;
-    background: linear-gradient(45deg, #ff4b2b, #ff416c);
-    color: white;
-    text-decoration: none;
-    border-radius: 25px;
-    margin-top: 20px;
-    font-weight: bold;
+    overflow-x: hidden;
+    /* Hareketli Arka Plan Katmanı */
+    background: radial-gradient(circle at center, #1a0505 0%, #050505 100%);
 }
 
-/* Oyuncu Kartları Alanı */
-.roster-container {
+/* Hareket Eden Işık Efekti */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0;
+    width: 200%; height: 200%;
+    background: url('https://www.transparenttextures.com/patterns/carbon-fibre.png'), 
+                radial-gradient(circle at 50% 50%, rgba(255, 75, 43, 0.05) 0%, transparent 50%);
+    animation: moveBackground 20s linear infinite;
+    z-index: -1;
+}
+
+@keyframes moveBackground {
+    0% { transform: translate(0, 0); }
+    50% { transform: translate(-5%, -5%); }
+    100% { transform: translate(0, 0); }
+}
+
+h1 {
+    color: #ff4b2b;
+    font-size: 3.5rem;
+    text-transform: uppercase;
+    letter-spacing: 8px;
+    margin-top: 50px;
+    text-shadow: 0 0 20px rgba(255, 75, 43, 0.5);
+}
+
+.next-match-box {
+    background: rgba(20, 20, 20, 0.8);
+    backdrop-filter: blur(10px); /* Cam efekti */
+    border: 1px solid rgba(255, 75, 43, 0.3);
+    border-radius: 20px;
+    padding: 30px;
+    margin: 40px auto;
+    max-width: 500px;
+    position: relative;
+    box-shadow: 0 0 30px rgba(0,0,0,0.5);
+}
+
+.roster-grid {
     display: flex;
     justify-content: center;
     gap: 20px;
     flex-wrap: wrap;
-    margin-top: 50px;
+    padding: 40px;
 }
 
 .player-card {
-    background: #1a1a1a;
-    border: 2px solid #ff4b2b;
+    background: rgba(30, 30, 30, 0.6);
+    backdrop-filter: blur(5px);
+    border: 1px solid #333;
     border-radius: 15px;
     padding: 20px;
-    width: 200px;
-    transition: 0.3s;
-    box-shadow: 0 0 15px rgba(255, 75, 43, 0.2);
+    width: 220px;
+    transition: 0.4s;
 }
 
 .player-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 0 25px rgba(255, 75, 43, 0.6);
+    border-color: #ff4b2b;
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 75, 43, 0.4);
 }
 
-.player-card img {
-    width: 100%;
-    border-radius: 10px;
-    filter: grayscale(100%);
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    background: #ff4b2b;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
     transition: 0.3s;
 }
 
-.player-card:hover img {
-    filter: grayscale(0%);
-}
-
-.player-name {
-    font-weight: bold;
-    font-size: 1.4rem;
-    margin-top: 15px;
-    color: #ff4b2b;
-}
-
-.player-role {
-    font-size: 0.9rem;
-    color: #888;
-    text-transform: uppercase;
+.btn:hover {
+    background: #ff2b00;
+    box-shadow: 0 0 15px #ff4b2b;
 }
