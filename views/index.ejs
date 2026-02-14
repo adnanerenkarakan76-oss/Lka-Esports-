@@ -1,33 +1,108 @@
 <!DOCTYPE html>
-<html>
+<html lang="tr">
 <head>
-    <title>LKA ESPORTS</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LKA ESPORTS | Resmi Kadro</title>
     <link rel="stylesheet" href="/style.css">
+    <style>
+        .roster-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            padding: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .player-card {
+            background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
+            border: 1px solid #ff4b2b;
+            border-radius: 20px;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+        .player-card:hover {
+            box-shadow: 0 0 30px rgba(255, 75, 43, 0.5);
+            transform: translateY(-10px);
+        }
+        .kupa-tag {
+            background: #ff4b2b;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 0.8rem;
+            position: absolute;
+            top: 15px;
+            right: 15px;
+        }
+        .player-nick {
+            font-size: 1.8rem;
+            color: #ff4b2b;
+            margin: 15px 0 5px 0;
+            text-transform: uppercase;
+            font-weight: 800;
+        }
+        .player-id {
+            color: #666;
+            font-family: monospace;
+            font-size: 0.9rem;
+        }
+        .stats {
+            margin-top: 15px;
+            border-top: 1px solid #333;
+            padding-top: 10px;
+            font-size: 0.9rem;
+        }
+    </style>
 </head>
 <body>
-    <h1>LKA ESPORTS</h1>
-    <p>Sarsılmaz Güç, Mutlak Galibiyet!</p>
+    <header>
+        <h1>LKA ESPORTS</h1>
+        <p>Arena'nın Yeni Devleri</p>
+    </header>
 
-    <div class="roster-container">
+    <div class="roster-grid">
         <div class="player-card">
-            <img src="https://via.placeholder.com/150" alt="Oyuncu">
-            <div class="player-name">AGA</div>
-            <div class="player-role">Kaptan / IGL</div>
+            <div class="kupa-tag">65K+ Kupa</div>
+            <div class="player-nick">Zypher</div>
+            <div class="player-id">#GGCY8982L</div>
+            <div class="stats">70 Galibiyet Serisi | Master</div>
         </div>
 
         <div class="player-card">
-            <img src="https://via.placeholder.com/150" alt="Oyuncu">
-            <div class="player-name">NAME</div>
-            <div class="player-role">Entry Fragger</div>
+            <div class="kupa-tag">84K+ Kupa</div>
+            <div class="player-nick">Florynt</div>
+            <div class="player-id">#9Q00YJ2YL</div>
+            <div class="stats">10K+ 3v3 Zafer | Efsanevi</div>
         </div>
 
         <div class="player-card">
-            <div class="player-name">?</div>
-            <div class="player-role">Keskin Nişancı</div>
+            <div class="kupa-tag">54K+ Kupa</div>
+            <div class="player-nick">Lodzz</div>
+            <div class="player-id">#Q90G8VP0Y</div>
+            <div class="stats">Malatya E-Sport Üyesi</div>
+        </div>
+
+        <div class="player-card">
+            <div class="kupa-tag">50K+ Kupa</div>
+            <div class="player-nick">Posie691</div>
+            <div class="player-id">#8VLOG00J8</div>
+            <div class="stats">Başkan | 7.8K 3v3 Zafer</div>
+        </div>
+
+        <div class="player-card">
+            <div class="kupa-tag">40K+ Kupa</div>
+            <div class="player-nick">Worzi</div>
+            <div class="player-id">#QJV9LPR2Q</div>
+            <div class="stats">8.6K 3v3 Zafer | House of Speed</div>
         </div>
     </div>
 
-    <br><br>
-    <a href="/login" class="btn">Admin Paneli</a>
+    <footer>
+        <a href="/login" class="btn">Yönetici Girişi</a>
+    </footer>
 </body>
 </html>
