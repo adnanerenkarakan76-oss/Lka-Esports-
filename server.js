@@ -5,7 +5,7 @@ const app = express();
 const db = new loki('esports.db', { autoload: true, autoloadCallback: databaseInitialize, autosave: true, autosaveInterval: 4000 });
 
 function databaseInitialize() {
-    if (!db.getCollection('stats')) db.addCollection('stats').insert({ wins: 0, losses: 0, instagram: '', banner: '', type: 'global' });
+    if (!db.getCollection('stats')) db.addCollection('stats').insert({ wins: 0, losses: 0, instagram: '', banner: '', nextMatch: 'Yakında!', matchTime: '', type: 'global' });
     if (!db.getCollection('players')) db.addCollection('players');
 }
 

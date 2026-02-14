@@ -3,6 +3,30 @@
 <head>
     <title>LKA ESPORTS</title>
     <link rel="stylesheet" href="/style.css">
+    <style>
+        .next-match-box {
+            background: linear-gradient(45deg, #111, #222);
+            border: 2px solid #ff4b2b;
+            border-radius: 20px;
+            padding: 30px;
+            margin: 40px auto;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(255, 75, 43, 0.3);
+        }
+        .match-vs {
+            font-size: 2.5rem;
+            color: #ff4b2b;
+            font-weight: 800;
+            margin: 10px 0;
+            text-shadow: 0 0 10px rgba(255, 75, 43, 0.7);
+        }
+        .match-info {
+            color: #888;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+        }
+    </style>
 </head>
 <body>
     <% if(stats.banner) { %>
@@ -19,6 +43,12 @@
             <a href="<%= stats.instagram %>" target="_blank" class="btn">INSTAGRAM</a>
         <% } %>
     </header>
+
+    <div class="next-match-box">
+        <div class="match-info">SIRADAKİ MAÇ ⚔️</div>
+        <div class="match-vs">LKA vs <%= stats.nextMatch %></div>
+        <div class="match-info" style="color: #fff;"><%= stats.matchTime %></div>
+    </div>
 
     <div class="roster-grid">
         <% players.forEach(function(p) { %>

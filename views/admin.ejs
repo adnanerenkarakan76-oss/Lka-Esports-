@@ -13,13 +13,22 @@
     <h1>LKA YÖNETİM MERKEZİ</h1>
 
     <div class="section">
+        <h3>Sonraki Maç Ayarları ⚔️</h3>
+        <form action="/admin/update-stats" method="POST">
+            <input type="text" name="nextMatch" placeholder="Rakip Takım İsmi" value="<%= stats.nextMatch %>">
+            <input type="text" name="matchTime" placeholder="Tarih/Saat (Örn: 20 Şubat 21:00)" value="<%= stats.matchTime %>">
+            <button class="btn" type="submit">Maç Bilgisini Güncelle</button>
+        </form>
+    </div>
+
+    <div class="section">
         <h3>Genel Ayarlar & Görsel</h3>
         <form action="/admin/update-stats" method="POST">
-            <input type="text" name="banner" placeholder="Banner Resim URL (Hızlı Resim vb.)" value="<%= stats.banner %>">
+            <input type="text" name="banner" placeholder="Banner Resim URL" value="<%= stats.banner %>">
             <input type="number" name="wins" placeholder="Wins" value="<%= stats.wins %>">
             <input type="number" name="losses" placeholder="Losses" value="<%= stats.losses %>">
             <input type="text" name="instagram" placeholder="Instagram URL" value="<%= stats.instagram %>">
-            <button class="btn" type="submit">Ayarları Kaydet</button>
+            <button class="btn" type="submit">Genel Ayarları Kaydet</button>
         </form>
     </div>
 
