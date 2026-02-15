@@ -8,9 +8,11 @@
 </head>
 <body>
     <h1>LKA ESPORTS</h1>
+    
     <div class="next-match-box">
-        <p>SIRADAKİ MAÇ: LKA vs <%= stats.nextMatch %></p>
-        <p>SKOR: <%= stats.matchTime %></p>
+        <h3 style="margin:0; font-size: 0.9rem; color: #888;">SIRADAKİ MAÇ</h3>
+        <h2 style="color: #ff4b2b; margin: 10px 0;">LKA vs <%= stats.nextMatch %></h2>
+        <p style="font-size: 1.2rem; margin:0;"><%= stats.matchTime %></p>
     </div>
 
     <section class="roster-grid">
@@ -18,9 +20,9 @@
             <div class="player-card-container">
                 <div class="card-inner">
                     <div class="card-front">
+                        <p style="color: #ff4b2b; font-weight: bold;"><%= player.kupa %></p>
                         <h2><%= player.nick %></h2>
-                        <p><%= player.kupa %></p>
-                        <p><%= player.ozellik %></p>
+                        <p>• <%= player.ozellik %></p>
                     </div>
                     <div class="card-back">LKA ESPORTS</div>
                 </div>
