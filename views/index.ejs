@@ -7,10 +7,23 @@
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
+    <header>
+        <% if (stats.banner) { %>
+            <img src="<%= stats.banner %>" alt="LKA Banner" style="width: 100%; max-width: 800px; display: block; margin: 0 auto;">
+        <% } %>
+    </header>
+
     <h1>LKA ESPORTS</h1>
+
+    <div style="margin-bottom: 20px;">
+        <span style="color: #4CAF50; font-size: 0.8rem; font-weight: bold;">WIN: <%= stats.wins %></span> | 
+        <span style="color: #f44336; font-size: 0.8rem; font-weight: bold;">LOSE: <%= stats.losses %></span>
+        <br><br>
+        <a href="<%= stats.instagram %>" target="_blank" style="background: #ff4b2b; color: white; text-decoration: none; padding: 8px 20px; border-radius: 5px; font-weight: bold; font-size: 0.8rem; text-transform: uppercase; box-shadow: 0 0 15px rgba(255, 75, 43, 0.5);">INSTAGRAM</a>
+    </div>
     
     <div class="next-match-box">
-        <p style="font-size: 0.7rem; color: #666; margin: 0;">SIRADAKİ MAÇ</p>
+        <p style="font-size: 0.7rem; color: #666; margin: 0;">SIRADAKİ MAÇ <span style="color: #ff4b2b;">X</span></p>
         <h2 style="color: #ff4b2b; margin: 10px 0; font-size: 1.4rem;">LKA vs <%= stats.nextMatch %></h2>
         <p style="margin: 0;"><%= stats.matchTime %></p>
     </div>
