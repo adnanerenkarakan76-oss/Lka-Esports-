@@ -1,63 +1,40 @@
 <!DOCTYPE html>
-<html>
+<html lang="tr">
 <head>
-    <title>LKA ESPORTS</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LKA Esports</title>
     <link rel="stylesheet" href="/style.css">
-    <style>
-        .next-match-box {
-            background: linear-gradient(45deg, #111, #222);
-            border: 2px solid #ff4b2b;
-            border-radius: 20px;
-            padding: 30px;
-            margin: 40px auto;
-            max-width: 500px;
-            text-align: center;
-            box-shadow: 0 0 20px rgba(255, 75, 43, 0.3);
-        }
-        .match-vs {
-            font-size: 2.5rem;
-            color: #ff4b2b;
-            font-weight: 800;
-            margin: 10px 0;
-            text-shadow: 0 0 10px rgba(255, 75, 43, 0.7);
-        }
-        .match-info {
-            color: #888;
-            font-size: 1.1rem;
-            letter-spacing: 2px;
-        }
-    </style>
+    <link rel="icon" href="https://i.hizliresim.com/6q0cxx6.png" type="image/png">
 </head>
 <body>
-    <% if(stats.banner) { %>
-        <img src="<%= stats.banner %>" style="width: 100%; max-height: 300px; object-fit: cover; border-bottom: 2px solid #ff4b2b;">
-    <% } %>
-
     <header>
         <h1>LKA ESPORTS</h1>
-        <div class="stats-bar">
-            <span style="color: #00ff00;">WIN: <%= stats.wins %></span> | 
-            <span style="color: #ff0000;">LOSE: <%= stats.losses %></span>
-        </div>
-        <% if(stats.instagram) { %>
-            <a href="<%= stats.instagram %>" target="_blank" class="btn">INSTAGRAM</a>
+        <% if (stats.banner) { %>
+            <img src="<%= stats.banner %>" alt="Team Banner" style="width: 100%; max-width: 600px; border-radius: 15px; margin: 20px auto; display: block;">
         <% } %>
+        <p>WIN: <%= stats.wins %> | LOSE: <%= stats.losses %> <a href="<%= stats.instagram %>" target="_blank" style="color: #ff4b2b; text-decoration: none;">&#x1F4F8;</a></p>
     </header>
 
     <div class="next-match-box">
-        <div class="match-info">SIRADAKİ MAÇ ⚔️</div>
-        <div class="match-vs">LKA vs <%= stats.nextMatch %></div>
-        <div class="match-info" style="color: #fff;"><%= stats.matchTime %></div>
+        <h3>SIRADAKİ MAÇ <span style="color: #ff4b2b;">X</span></h3>
+        <p>LKA vs <%= stats.nextMatch %></p>
+        <p><%= stats.matchTime %></p>
     </div>
 
-    <div class="roster-grid">
-        <% players.forEach(function(p) { %>
-            <div class="player-card">
-                <div class="kupa-tag"><%= p.kupa %></div>
-                <div class="player-nick"><%= p.nick %></div>
-                <div class="stats"><p>• <%= p.ozellik %></p></div>
+    <section class="roster-grid">
+        <% players.forEach(player => { %>
+            <div class="player-card-container">
+                <div class="player-card">
+                    <h2><%= player.nick %></h2>
+                    <p>Kupa: <%= player.kupa %></p>
+                    <p>Özellik: <%= player.ozellik %></p>
+                </div>
+                <div class="player-card-back">
+                    LKA ESPORTS
+                </div>
             </div>
         <% }); %>
-    </div>
+    </section>
 </body>
 </html>
