@@ -1,38 +1,37 @@
 body {
-    background-color: #0d0d0d;
+    background-color: #0a0a0a;
     color: #ffffff;
     font-family: 'Segoe UI', sans-serif;
     text-align: center;
     margin: 0;
-    background: radial-gradient(circle at center, #1a0808 0%, #0d0d0d 100%);
+    background: radial-gradient(circle at center, #150a0a 0%, #0a0a0a 100%);
 }
 
 h1 {
     color: #ff4b2b;
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     text-transform: uppercase;
-    letter-spacing: 5px;
+    letter-spacing: 6px;
     margin-top: 40px;
-    text-shadow: 0 0 15px rgba(255, 75, 43, 0.4);
+    text-shadow: 0 0 10px rgba(255, 75, 43, 0.3);
 }
 
 .next-match-box {
-    background: rgba(25, 25, 25, 0.9);
-    border: 1px solid #ff4b2b;
-    border-radius: 15px;
-    padding: 25px;
+    background: rgba(20, 20, 20, 0.9);
+    border: 1px solid rgba(255, 75, 43, 0.4);
+    border-radius: 12px;
+    padding: 20px;
     margin: 30px auto;
-    max-width: 450px;
-    box-shadow: 0 0 20px rgba(255, 75, 43, 0.2);
+    max-width: 400px;
 }
 
-/* Eski sevdiğin 3 sütunlu geniş düzen */
+/* Ekran görüntüsündeki o geniş 3'lü dizilim */
 .roster-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    padding: 30px;
-    max-width: 1000px;
+    gap: 15px;
+    padding: 20px;
+    max-width: 900px;
     margin: 0 auto;
 }
 
@@ -40,9 +39,9 @@ h1 {
     .roster-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
-/* 3D Kart Yapısı - Genişlik ve boyutu eski haline çektik */
+/* 3D Kart - Eski genişlik ve siyah tema */
 .player-card-container {
-    height: 180px; 
+    height: 140px;
     perspective: 1000px;
 }
 
@@ -50,7 +49,7 @@ h1 {
     position: relative;
     width: 100%;
     height: 100%;
-    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.6s;
     transform-style: preserve-3d;
 }
 
@@ -63,30 +62,29 @@ h1 {
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
-    border-radius: 12px;
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-/* Ön yüz: Eski siyah/koyu gri tema */
+/* Ön yüz: Tam istediğin o koyu gri kutular */
 .card-front {
-    background: #181818;
-    border: 1px solid #2a2a2a;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    background: #1c1c1c;
+    border: 1px solid #252525;
 }
 
-/* Arka yüz: Altın sarısı şov */
+/* Arka yüz: Sadece dönünce çıkan altın sarısı LKA */
 .card-back {
-    background: linear-gradient(45deg, #d4af37, #f9d71c);
+    background: linear-gradient(45deg, #bf953f, #fcf6ba, #b38728);
     color: #000;
     transform: rotateY(180deg);
     font-weight: bold;
-    font-size: 1.4rem;
-    border: 2px solid #fff;
-    box-shadow: 0 0 25px rgba(212, 175, 55, 0.6);
+    font-size: 1.1rem;
+    box-shadow: 0 0 15px rgba(191, 149, 63, 0.5);
 }
 
-.card-front h2 { color: #fff; font-size: 1.2rem; margin-bottom: 5px; }
-.card-front p { color: #bbb; margin: 2px 0; font-size: 0.9rem; }
+.card-front h2 { font-size: 1rem; margin: 5px 0; color: #fff; }
+.card-front p { font-size: 0.8rem; margin: 2px 0; color: #888; }
+.kupa-text { color: #ff4b2b !important; font-weight: bold; }
