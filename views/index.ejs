@@ -5,33 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LKA Esports</title>
     <link rel="stylesheet" href="/style.css">
-    <link rel="icon" href="https://i.hizliresim.com/6q0cxx6.png" type="image/png">
 </head>
 <body>
-    <header>
-        <h1>LKA ESPORTS</h1>
-        <% if (stats.banner) { %>
-            <img src="<%= stats.banner %>" alt="Team Banner" style="width: 100%; max-width: 600px; border-radius: 15px; margin: 20px auto; display: block;">
-        <% } %>
-        <p>WIN: <%= stats.wins %> | LOSE: <%= stats.losses %> <a href="<%= stats.instagram %>" target="_blank" style="color: #ff4b2b; text-decoration: none;">&#x1F4F8;</a></p>
-    </header>
-
+    <h1>LKA ESPORTS</h1>
     <div class="next-match-box">
-        <h3>SIRADAKİ MAÇ <span style="color: #ff4b2b;">X</span></h3>
-        <p>LKA vs <%= stats.nextMatch %></p>
-        <p><%= stats.matchTime %></p>
+        <p>SIRADAKİ MAÇ: LKA vs <%= stats.nextMatch %></p>
+        <p>SKOR: <%= stats.matchTime %></p>
     </div>
 
     <section class="roster-grid">
         <% players.forEach(player => { %>
             <div class="player-card-container">
-                <div class="player-card">
-                    <h2><%= player.nick %></h2>
-                    <p>Kupa: <%= player.kupa %></p>
-                    <p>Özellik: <%= player.ozellik %></p>
-                </div>
-                <div class="player-card-back">
-                    LKA ESPORTS
+                <div class="card-inner">
+                    <div class="card-front">
+                        <h2><%= player.nick %></h2>
+                        <p><%= player.kupa %></p>
+                        <p><%= player.ozellik %></p>
+                    </div>
+                    <div class="card-back">LKA ESPORTS</div>
                 </div>
             </div>
         <% }); %>
